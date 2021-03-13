@@ -8,7 +8,8 @@ import com.capgemini.db.EmployeeDB;
 import com.capgemini.dto.Employee;
 import com.capgemini.exceptions.InvalidEmployeeException;
 import com.capgemini.exceptions.WrongSalaryExceptions;
-
+import com.capgemini.dto.Project;
+import com.capgemini.exceptions.NotFoundException;
 public class EmployeeServiceImplementation implements IEmployeeService {
 	IEmployeeDAO dao;
 
@@ -51,14 +52,48 @@ public class EmployeeServiceImplementation implements IEmployeeService {
 			throw new InvalidEmployeeException(id);
 	}
 
-	public List<Employee> getEmployeeBySalary(int salary) {
+	public List<Employee> getEmployeeBySalary(int salary) throws NotFoundException {
 		List<Employee> emps = dao.getEmployeeBySalary(salary);
-		return emps;
+		if(emps.isEmpty())
+			throw new NotFoundException();
+		else
+			return emps;
 	}
 
-	public List<Employee> getEmployessBySalaryRange(int salaryRangeMin, int salaryRangeMax) {
+	public List<Employee> getEmployessBySalaryRange(int salaryRangeMin, int salaryRangeMax) throws NotFoundException{
 		List<Employee> emps = dao.getEmployessBySalaryRange(salaryRangeMin, salaryRangeMax);
-		return emps;
+		if(emps.isEmpty())
+			throw new NotFoundException();
+		else
+			return emps;
+	}
+	
+	public List<Project> getAllProjects(){
+		return dao.getAllProjects();
 	}
 
+	public int getCountinProject(String projectName) throws NotFoundException{
+		int count=0;
+		count=dao.getCountinProject(projectName);
+		if(count==0)
+			throw new NotFoundException();
+		else
+			return count;
+	}
+	
+	public List<Employee> getEmployeeinProject(String projectName) throws NotFoundException{
+		List<Employee> emps=dao.getEmployeeinProject(projectName);
+		if(emps.isEmpty())
+			throw new NotFoundException();
+		else
+			return emps;
+	}
+	
+	public List<Employee> getAllEmployeeinLocation(String location) throws NotFoundException{
+		List<Employee> emps=dao.getAllEmployeeinLocation(location);
+		if(emps.isEmpty())
+			throw new NotFoundException();
+		else
+			return emps;
+	}	
 }

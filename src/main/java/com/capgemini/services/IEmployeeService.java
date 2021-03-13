@@ -2,9 +2,12 @@ package com.capgemini.services;
 
 import java.util.List;
 
+
 import com.capgemini.dto.Employee;
 import com.capgemini.exceptions.InvalidEmployeeException;
 import com.capgemini.exceptions.WrongSalaryExceptions;
+import com.capgemini.dto.Project;
+import com.capgemini.exceptions.NotFoundException;
 
 public interface IEmployeeService {
 	
@@ -16,8 +19,16 @@ public interface IEmployeeService {
 	 
 	 public List<Employee> getAllEmployees();
 	 
-	 public List<Employee> getEmployeeBySalary(int salary);
+	 public List<Employee> getEmployeeBySalary(int salary) throws NotFoundException;
 	 
-	 public List<Employee> getEmployessBySalaryRange(int salaryRangeMin,int salaryRangeMax);
+	 public List<Employee> getEmployessBySalaryRange(int salaryRangeMin,int salaryRangeMax) throws NotFoundException;
+	 
+	 public List<Project> getAllProjects();
+	 
+	 public int getCountinProject(String projectName) throws NotFoundException;
+	 
+	 public List<Employee> getEmployeeinProject(String projectName) throws NotFoundException;
+
+	public List<Employee> getAllEmployeeinLocation(String location) throws NotFoundException;
 
 }

@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.*;
 
 import com.capgemini.dto.Employee;
-
+import com.capgemini.dto.Project;
 public class EmployeeDB {
 	// Employee cannot be resolved to a type
 	public static HashMap <Integer, Employee> employees=new HashMap<Integer, Employee>();
@@ -18,10 +18,13 @@ public class EmployeeDB {
 	
 	public EmployeeDB() {
 		super();
-		Employee e1=new Employee(101,"Ramesh",5,25000);
-		Employee e2=new Employee(102,"Suresh",2,8000);
-		Employee e3=new Employee(103,"Rakesh",7,40000);
-		Employee e4=new Employee(104,"Lokesh",0,5000);
+		Project p1=new Project("Alfa","Bangalore","Rakesh",2018,2023);
+		Project p2=new Project("Black Star","Chennai","Ramesh",2020,2030);
+		
+		Employee e1=new Employee(101,"Ramesh",5,25000,p2);
+		Employee e2=new Employee(102,"Suresh",2,8000,p1);
+		Employee e3=new Employee(103,"Rakesh",7,40000,p1);
+		Employee e4=new Employee(104,"Lokesh",0,5000,p2);
 		
 		EmployeeDB.employees.put(e1.getEmployeeId(), e1);
 		EmployeeDB.employees.put(e2.getEmployeeId(), e2);

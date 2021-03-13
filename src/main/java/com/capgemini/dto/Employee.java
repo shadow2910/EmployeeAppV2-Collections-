@@ -6,17 +6,20 @@ public class Employee {
 	private String name;
 	private int exp;
 	private int salary;
+	private Project project;
+	
 	
 	public Employee() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Employee(int employeeId, String name, int exp, int salary) {
+	public Employee(int employeeId, String name, int exp, int salary, Project project) {
 		super();
 		this.employeeId = employeeId;
 		this.name = name;
 		this.exp = exp;
 		this.salary = salary;
+		this.project = project;
 	}
 	public int getEmployeeId() {
 		return employeeId;
@@ -42,9 +45,17 @@ public class Employee {
 	public void setSalary(int salary) {
 		this.salary = salary;
 	}
+	
+	public Project getProject() {
+		return project;
+	}
+	public void setProject(Project project) {
+		this.project = project;
+	}
 	@Override
 	public String toString() {
-		return "Employee [employeeId=" + employeeId + ", name=" + name + ", exp=" + exp + ", salary=" + salary + "]";
+		return "Employee [employeeId=" + employeeId + ", name=" + name + ", exp=" + exp + ", salary=" + salary
+				+ ", project=" + project.getProjectName() + "]";
 	}
 	
 	

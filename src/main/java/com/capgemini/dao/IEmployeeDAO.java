@@ -1,6 +1,7 @@
 package com.capgemini.dao;
 
 import java.util.List;
+import com.capgemini.dto.Project;
 
 import com.capgemini.dto.Employee;
 import com.capgemini.exceptions.InvalidEmployeeException;
@@ -20,5 +21,12 @@ public interface IEmployeeDAO {
 	 public List<Employee> getEmployeeBySalary(int salary);
 	 
 	 public List<Employee> getEmployessBySalaryRange(int salaryRangeMin,int salaryRangeMax);
+	 
+	 public List<Project> getAllProjects();
 
+	 public int getCountinProject(String projectName);
+	 
+	 public List<Employee> getEmployeeinProject(String projectName);
+	 
+	 public List<Employee> getAllEmployeeinLocation(String location);
 }
